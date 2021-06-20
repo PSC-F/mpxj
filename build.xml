@@ -37,7 +37,7 @@
 		-->
 		<property name="target-jvm-version" value="1.8" />
 
-		<property name="poi.jar" value="poi-4.1.2" />
+		<property name="poi.jar" value="poi-5.0.0" />
 		<path id="poi.path">
 			<pathelement location="${lib.dir}/${poi.jar}.jar" />
 		</path>
@@ -357,7 +357,14 @@
 		  JAR we're compiling.
 		-->
 		<jar destfile="${ikvm.working.dir}\${poi.jar}.stripped.jar">
-		    <zipfileset src="${basedir}\lib\${poi.jar}.jar" excludes="**/GenericRecord.class"/>
+		    <zipfileset src="${basedir}\lib\${poi.jar}.jar">
+		    	<exclude name="**/GenericRecord.class"/>
+		    	<exclude name="org/apache/poi/ddf/**"/>
+		    	<exclude name="org/apache/poi/hssf/**"/>
+		    	<exclude name="org/apache/poi/sl/**"/>
+		    	<exclude name="org/apache/poi/ss/**"/>
+		    	<exclude name="org/apache/poi/wp/**"/>
+		    </zipfileset>
 		</jar>
 
 		<exec executable="${ikvmc.exe}" dir="${basedir}">

@@ -32,6 +32,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.TreeMap;
 
 import org.apache.poi.poifs.filesystem.DirectoryEntry;
@@ -1884,7 +1885,7 @@ final class MPP14Reader implements MPPVariantReader
             varData = new Var2Data(varMeta, new DocumentInputStream(((DocumentEntry) dir.getEntry("Var2Data"))));
          }
 
-         catch (IndexOutOfBoundsException ex)
+         catch (NoSuchElementException ex)
          {
             // From a sample file where the stream reports an available number of bytes
             // but attempting to read that number of bytes raises an exception.
