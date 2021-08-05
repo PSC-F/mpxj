@@ -4,11 +4,15 @@ Welcome to MPXJ! This library provides a set of facilities to allow project info
 Full documentation including release notes can be found online at [http://mpxj.org](http://mpxj.org). 
 # MPXJ文档整理 
 
+---
+
 ### 介绍
 
 * 该库基于一组数据结构，这些数据结构遵循 Microsoft Project 表示计划数据的方式。项目数据的所有操作都使用这些数据结构进行，这些数据结构可以从各种支持的文件格式中读取或写入。另外MpxjExtensionMethods扩展方法提供了JAVA与C#的类型转换。额外依赖IKVM-OpenJdk运行。底层基于Java实现、此版本for-Csharp版屏蔽了Java语法，去掉了getter、setter、改为属性。具体可参照官网Java代码片段 http://www.mpxj.org/
 
-### 支持操作的文件格式
+---
+
+### 支持的格式
 
 |  MPX  |  √   |
 | :---: | :--: |
@@ -20,15 +24,20 @@ Full documentation including release notes can be found online at [http://mpxj.o
 
 *  Nuget  => 检索  MPXJ  =>  选择 for csharp 9.5.1版本
 
-### 关键实体关系图
+---
 
-* ![关键 MPXJ 实体图](http://www.mpxj.org/images/mpxj-entities.png)
+### 实体关系图
+
+ ![关键 MPXJ 实体图](http://www.mpxj.org/images/mpxj-entities.png)
+---
+
+---
 
 ## 快速上手  >_
 
-###  1.读取文件方式：
+###  1.读取文件方式
 
-``` java
+``` c#
 ProjectReader reader = new UniversalProjectReader ();// 使用通用加载器 自动识别文件类型
 ProjectFile project = reader.read("C:\\Users\\zpf\\Documents\\TestDemoFile.mpp");
 ```
@@ -43,9 +52,9 @@ net.sf.mpxj.planner.PlannerWriter: // 写入规划器 (XML) 文件
 net.sf.mpxj.json.JsonWriter: // 写入 JSON 文件（主要用于支持 Ruby 版本的 MPXJ）
 ```
 
-### 2.写文件： 
+### 2.写文件
 
-```java
+```c#
 ProjectWriter writer = new MPXWriter(); // 所有的类都实现了ProjectWriter接口 可以直接调用 写入器
 writer.write(project, "C:\\Users\\zpf\\Documents\\TestDemoFile.mpp");
 ```
@@ -164,4 +173,8 @@ var complete = assignment.TimephasedActualWork.ToIEnumerable(); // 分时实际�
   上面定义的两个列表将包含多个 TimephasedResourceAssignment 实例，其中在不同的日子工作不同的小时数。一天中工作相同小时数的每个连续日期范围将由一个 TimephasedResourceAssignment 实例表示。
 
   两个时间分段数据列表分别代表已完成（实际）工作和计划工作。如果这些列表用于显示部分完成的一天的工作，则这些列表可能会重叠一天。例如，在正常的 8 小时工作日中，如果已经完成了 4 小时的工作，还剩下 4 小时，那么已完成的时间分段数据列表将以 4 小时已完成的工作结束，计划工作列表将从当天剩余的 4 小时开始。
+
+​		                                                                                                                                                                                                                                              @<u>zpf</u>
+
+
 
